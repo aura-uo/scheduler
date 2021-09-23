@@ -12,8 +12,12 @@ const firebaseConfig = {
     appId: "1:1018553075601:web:ba2ea38764dc88a8873c30"
 };
 
-firebase.initializeApp(firebaseConfig)
-
 export const useData = (path, transform) => (
     useObjectVal(firebase.database().ref(path), { transform })
 );
+
+export const setData = (path, value) => (
+    firebase.database().ref(path).set(value)
+);
+
+firebase.initializeApp(firebaseConfig)
